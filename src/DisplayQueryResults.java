@@ -1,26 +1,14 @@
-import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.*;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.regex.PatternSyntaxException;
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JTable;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.Box;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.RowFilter;
-import javax.swing.table.TableRowSorter;
-import javax.swing.table.TableModel;
 
 public class DisplayQueryResults extends JFrame {
-    private static final String DATABASE_URL = "jdbc:derby:C:\\data\\project\\testAGr\\lib\\files; create = true";
+    private static final String DATABASE_URL = "jdbc:derby:C:\\data\\project\\organize\\lib\\files; create = true";
     private static final String DROP_QUERY = "DROP TABLE files";
     private static final String CREATE_QUERY = "CREATE TABLE files (" +
             "   fileID INT NOT NULL GENERATED ALWAYS AS IDENTITY," +
