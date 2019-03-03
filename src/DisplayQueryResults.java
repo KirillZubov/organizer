@@ -8,7 +8,8 @@ import java.sql.SQLException;
 import java.util.regex.PatternSyntaxException;
 
 public class DisplayQueryResults extends JFrame {
-    private static final String DATABASE_URL = "jdbc:derby:C:\\data\\project\\organize\\lib\\files; create = true";
+    private static final String DATABASE_URL =
+            "jdbc:derby:C:\\---PATH---\\organizer\\lib\\files; create = true";
     private static final String DROP_QUERY = "DROP TABLE files";
     private static final String CREATE_QUERY = "CREATE TABLE files (" +
             "   fileID INT NOT NULL GENERATED ALWAYS AS IDENTITY," +
