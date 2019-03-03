@@ -20,8 +20,14 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableModel;
 
 public class DisplayQueryResults extends JFrame {
-    private static final String DATABASE_URL = "jdbc:derby:C:\\data\\project\\testAGr\\lib\\files";
-    private static final String DELETE_QUERY = "DELETE FROM files";
+    private static final String DATABASE_URL = "jdbc:derby:C:\\data\\project\\testAGr\\lib\\files; create = true";
+    private static final String DROP_QUERY = "DROP TABLE files";
+    private static final String CREATE_QUERY = "CREATE TABLE files (" +
+            "   fileID INT NOT NULL GENERATED ALWAYS AS IDENTITY," +
+            "   fileName varchar (20) NOT NULL," +
+            "   tags varchar (200) NOT NULL," +
+            "   PRIMARY KEY (fileID))";
+
     private static final String INSERT_QUERY =
             "insert into files(fileName, tags) values ('Jonh Rod','histoty of compiler; costructor; meta data')";
     private static final String DEFAULT_QUERY = "SELECT * FROM files";
@@ -30,7 +36,7 @@ public class DisplayQueryResults extends JFrame {
     public static void main(String[] args) {
         try {
             tableModel = new ResultSetTableModel(DATABASE_URL,
-                    DELETE_QUERY, INSERT_QUERY, DEFAULT_QUERY);
+                    DROP_QUERY, CREATE_QUERY, INSERT_QUERY, DEFAULT_QUERY);
             final JTextArea queryArea = new JTextArea(null, 1, 50);
             queryArea.setWrapStyleWord(true);
             queryArea.setLineWrap(true);

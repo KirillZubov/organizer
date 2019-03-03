@@ -14,12 +14,14 @@ public class ResultSetTableModel extends AbstractTableModel {
     private int numberOfRows;
     private boolean connectedToDatabase;
 
-    public ResultSetTableModel(String url, String deleteQuery, String insert, String query) throws SQLException {
+    public ResultSetTableModel(String url, String dropQuery,
+                               String createQuery, String insert, String query) throws SQLException {
         connection = DriverManager.getConnection(url, null, null);
         statement = connection.createStatement(
                 ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        statement.execute(deleteQuery);
+        statement.execute(dropQuery);
+        statement.execute(createQuery);
         statement.execute(insert);
         connectedToDatabase = true;
         setQuery(query);
@@ -36,6 +38,7 @@ public class ResultSetTableModel extends AbstractTableModel {
 
         return 0;
     }
+
     public int getRowCount() throws IllegalStateException {
         if (!connectedToDatabase)
             throw new IllegalStateException("Not Connected to Database");
